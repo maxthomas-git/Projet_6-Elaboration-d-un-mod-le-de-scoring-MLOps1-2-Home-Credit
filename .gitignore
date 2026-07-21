@@ -1,0 +1,34 @@
+# ======================
+# Environnement Python
+# ======================
+
+.venv/
+
+# ======================
+# Jupyter
+# ======================
+
+.ipynb_checkpoints/
+Untitled.ipynb
+Untitled1.ipynb
+
+# ======================
+# Cache Python
+# ======================
+
+__pycache__/
+*.pyc
+
+# ======================
+# Données (trop volumineuses)
+# ======================
+
+*.csv
+
+
+# ======================
+# MLflow
+# ======================
+
+mlruns/
+mlflow.db
