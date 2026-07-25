@@ -20,11 +20,10 @@ __pycache__/
 *.pyc
 
 # ======================
-# Données (trop volumineuses)
+# Données CSV
 # ======================
 
 *.csv
-
 
 # ======================
 # MLflow

@@ -122,3 +122,60 @@ mlflow ui
 Puis ouvrir dans un navigateur :
 
 http://127.0.0.1:5000
+
+
+## Serving du modèle avec MLflow
+
+Le modèle final est enregistré dans le **MLflow Model Registry**. Il peut être servi localement à l'aide de MLflow.
+
+### Lancer le serveur
+
+Depuis la racine du projet :
+
+```bash
+mlflow models serve \
+-m "models:/LightGBM/latest" \
+--host 127.0.0.1 \
+--port 5000 \
+--env-manager local
+```
+
+Le serveur est alors accessible à l'adresse :
+
+```
+http://127.0.0.1:5000
+```
+
+### Tester le modèle servi
+
+Depuis le notebook, une requête peut être envoyée au serveur avec un échantillon du jeu de test :
+
+Exécuter le notebook jusqu'à l'enregistrement du modèle dans le Registry avant de lancer:
+
+```python
+sample = X_test.iloc[[270]]
+
+payload = {
+    "dataframe_split": {
+        "columns": sample.columns.tolist(),
+        "data": sample.values.tolist()
+    }
+}
+
+response = requests.post(
+    "http://127.0.0.1:5000/invocations",
+    json=payload
+)
+
+print(response.status_code)
+print(response.json())
+```
+
+Exemple de réponse :
+
+```
+200
+{'predictions': [1]}
+```
+
+Ce test valide le bon déploiement du modèle et son utilisation via l'API REST de MLflow.
