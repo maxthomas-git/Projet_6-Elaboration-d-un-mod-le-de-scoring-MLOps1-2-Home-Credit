@@ -136,14 +136,14 @@ Depuis la racine du projet :
 mlflow models serve \
 -m "models:/LightGBM/latest" \
 --host 127.0.0.1 \
---port 5000 \
+--port 5001 \
 --env-manager local
 ```
 
 Le serveur est alors accessible à l'adresse :
 
 ```
-http://127.0.0.1:5000
+http://127.0.0.1:5001
 ```
 
 ### Tester le modèle servi
@@ -163,7 +163,7 @@ payload = {
 }
 
 response = requests.post(
-    "http://127.0.0.1:5000/invocations",
+    "http://127.0.0.1:5001/invocations",
     json=payload
 )
 
