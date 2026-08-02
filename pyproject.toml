@@ -1,7 +1,7 @@
 [project]
 name = "projet-6"
 version = "0.1.0"
-description = "Add your description here"
+description = "Projet MLOps utilisant MLflow pour le tracking des experiences"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
